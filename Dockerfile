@@ -10,5 +10,6 @@ WORKDIR /root/nginx-1.9.12
 RUN ./configure --with-debug && make && make install
 RUN ln -sf /dev/stderr /usr/local/nginx/logs/error.log
 RUN ln -sf /dev/stdout /usr/local/nginx/logs/access.log
+RUN echo 'error_log  logs/error.log  debug;' >> /usr/local/nginx/conf/nginx.conf
 EXPOSE 443/tcp 80/tcp
 CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
